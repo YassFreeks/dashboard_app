@@ -19,7 +19,7 @@ const daySchema = new Schema(
         },
     },
     { toJSON: { getters: true } }
-)
+);
 
 const monthSchema = new Schema(
     {
@@ -46,9 +46,9 @@ const monthSchema = new Schema(
         },
     },
     { toJSON: { getters: true } }
-)
+);
 
-const KPIschema = new Schema(
+const KPISchema = new Schema(
     {
         totalProfit: {
             type: mongoose.Types.Currency,
@@ -70,15 +70,15 @@ const KPIschema = new Schema(
             of: {
                 type: mongoose.Types.Currency,
                 currency: "USD",
-                get: (v) => v / 100
-            }
+                get: (v) => v / 100,
+            },
         },
-        monthlyData: [monthScheme],
-        dailyData: [daySchema]
+        monthlyData: [monthSchema],
+        dailyData: [daySchema],
     },
     { timestamps: true, toJSON: { getters: true } }
 );
 
-const KPI = mongoose.model("KPI", KPIschema);
+const KPI = mongoose.model("KPI", KPISchema);
 
 export default KPI;
